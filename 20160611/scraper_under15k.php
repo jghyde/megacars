@@ -218,7 +218,6 @@ function get_domain($api_key, $request_url) {
   curl_setopt($ch, CURLOPT_URL, 'http://apiv2.clickmeter.com:80' . $uri);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   $result = curl_exec($ch);
-  curl_close($ch);
   $domain_final = json_decode($result);
   $domain = array(
     'id' => $domain_final->id,
