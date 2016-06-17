@@ -224,7 +224,6 @@ function get_domain($api_key, $request_url) {
     'id' => $domain_final->id,
     'url' => $domain_final->name,
   );
-  curl_close($ch);
   return $domain;
 }
 function get_domain_details($api_key, $request_tracking_url) {
