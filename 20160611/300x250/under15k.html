@@ -121,6 +121,8 @@
         }
 
         #page .inner {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
             box-sizing: border-box;
             height: 248px;
             width: 298px;
@@ -133,61 +135,58 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d62027', endColorstr='#aa1229',GradientType=1 ); /* IE6-9 */
         }
         #page .inner #logo {
-            width: 100px;
-            height: auto;
+            width: 80px;
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 15px;
+            left: 3px;
+            display: block;
         }
         #page .inner #logo img {
-            width: 200px;
-            height: 85px;
-            margin: 20px auto;
+            width: 122px;
+            height: auto;
         }
+
         #page .inner #events {
             width: 100%;
             position: absolute;
             height: 132px;
-            bottom: 3px;
-            left: 2px;
+            top: 76px;
+            left: 1px;
          }
         #page .inner .heading {
-            width: 766px;
-            margin: 0;
-            padding: 0;
-            float: left;
+            width: 149px;
+            position: absolute;
+            top: 2px;
+            right: 5px;
         }
         #page .inner  .heading h2 {
             display: block;
             color: #ffffff;
-            font-size: 26px;
-            line-height: 40px;
+            font-size: 14px;
+            line-height: 18px;
             text-align: center;
-            margin-bottom: 12px;
-            margin-top: 10px;
         }
-        #page .inner .heading a.button {
+        a#cta.button {
             display: block;
-            height: 32px;
-            margin: 4px 4px 0 0;
-            width: 140px;
-            margin: 0 auto;
+            height: 26px;
+            width: 136px;
             text-decoration: none;
             text-align: center;
             font-weight: 800;
-            line-height: 32px;
+            line-height: 26px;
             background-color: #ffffff;
             color: #000000;
             border: 2px solid #000000;
             border-radius: 4px;
+            position: absolute;
+            bottom: 6px;
+            right: 4px;
         }
         .iosSlider {
             position: relative;
-            top: 0;
-            left: 0;
             overflow: hidden;
             width: 298px;
-            height: 199px;
+            height: 132px;
         }
 
         .iosSlider .prevButton {
@@ -219,9 +218,10 @@
         }
         .iosSlider .slider .item {
             display: block;
-            height: 164px;
+            height: 132px;
             width: 200px;
             text-decoration: none;
+            background-size: cover;
         }
         .iosSlider .slider .item h2.carname {
             display: block;
@@ -252,6 +252,12 @@
             margin-top: 100px;
             bottom: 10px;
         }
+        #libby {
+            width: 80px;
+            height: auto;
+            left: 10px;
+            bottom: -5px;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -281,13 +287,14 @@
                         elasticPullResistance: 0.1,
                         infiniteSlider: true,
                         autoSlide: true,
-                        autoSlideTimer: 500,
+                        autoSlideTimer: 1500,
                         navPrevSelector: '.prevButton',
                         navNextSelector: '.nextButton',
+                        snapSlideCenter: 'true',
                     });
                 }
             });
-            $('.heading a.button').hover(function(){
+            $('a.button').hover(function(){
                 $(this).css('background-color', '#cccccc');
               }, function() {
                 $(this).css('background-color', '#ffffff');
@@ -308,10 +315,9 @@
 <body>
 <div id="page">
     <div class="inner">
-            <img id="logo" src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/>
+        <a id="logo" href="http://45.gs/AllSportBB" target="_blank" title="Shop for Mega Sports Cars"><img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/></a>
         <div class="heading">
             <h2>Clean, Pre-Owned Vehicles Under $15,000 With Warranty.</h2>
-            <a href="http://45.gs/under15kWebBB" target="_blank" class="button">View All</a>
         </div>
         <div id="events">
             <div class="slidecontainer">
@@ -324,7 +330,8 @@
             </div>
         </div>
     </div>
-    <img src="../libby.png" class="libby" alt="Libby at MegaCars.com" />
+    <img src="../libby-summer-101x68.png" height="101" width="68" class="libby" alt="Libby at MegaCars.com" id="libby" />
+    <a href="http://45.gs/under15kWebBB" target="_blank" class="button" id="cta">View All</a>
 </div>
 </body>
 </html>
