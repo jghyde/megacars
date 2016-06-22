@@ -1,3 +1,10 @@
 .DS_Store
 .idea/
 .idea
+images
+images/*
+*.json
+array*.jpg
+array.jpg
+*images/*
+*images*
