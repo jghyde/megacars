@@ -107,7 +107,7 @@
 
         #page {
             height: 250px;
-            width: 970px;
+            width: 300px;
             background-color: #000000;
             position: relative;
             overflow: hidden;
@@ -123,7 +123,7 @@
         #page .inner {
             box-sizing: border-box;
             height: 248px;
-            width: 968px;
+            width: 298px;
             margin: 1px;
             /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d62027+0,aa1229+100 */
             background: rgb(214,32,39); /* Old browsers */
@@ -133,8 +133,11 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d62027', endColorstr='#aa1229',GradientType=1 ); /* IE6-9 */
         }
         #page .inner #logo {
-            width: 200px;
-            float: left;
+            width: 100px;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         #page .inner #logo img {
             width: 200px;
@@ -183,8 +186,8 @@
             top: 0;
             left: 0;
             overflow: hidden;
-            width: 966px;
-            height: 132px;
+            width: 298px;
+            height: 199px;
         }
 
         .iosSlider .prevButton {
@@ -216,7 +219,7 @@
         }
         .iosSlider .slider .item {
             display: block;
-            height: 132px;
+            height: 164px;
             width: 200px;
             text-decoration: none;
         }
@@ -305,9 +308,7 @@
 <body>
 <div id="page">
     <div class="inner">
-        <div id="logo">
-            <img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/>
-        </div>
+            <img id="logo" src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/>
         <div class="heading">
             <h2>Clean, Pre-Owned Vehicles Under $15,000 With Warranty.</h2>
             <a href="http://45.gs/under15kWebBB" target="_blank" class="button">View All</a>
