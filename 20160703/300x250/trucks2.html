@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Honda of San Angelo</title>
+    <title>MegaCars Under $15k</title>
     <script src="https://use.typekit.net/xys6jek.js"></script>
     <script>try {
         Typekit.load({async: true});
@@ -133,6 +133,9 @@
             background: -webkit-linear-gradient(left,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* Chrome10-25,Safari5.1-6 */
             background: linear-gradient(to right,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d62027', endColorstr='#aa1229',GradientType=1 ); /* IE6-9 */
+            background-image: url(background.jpg);
+            background-position: 0 0;
+            background-repeat: no-repeat;
         }
         #page .inner #logo {
             width: 80px;
@@ -152,11 +155,11 @@
             height: 132px;
             top: 76px;
             left: 1px;
-        }
+         }
         #page .inner .heading {
             width: 149px;
             position: absolute;
-            top: 6px;
+            top: 10px;
             right: 5px;
         }
         #page .inner  .heading h2 {
@@ -261,7 +264,7 @@
     </style>
     <script>
         $(document).ready(function () {
-            $.getJSON("../chevysuvs.json", function (cars, status) {
+            $.getJSON("../trucks2.json", function (cars, status) {
                 if (status == 'success') {
                     console.log(cars);
                     var slides = '';
@@ -296,7 +299,7 @@
             });
             $('a.button').hover(function(){
                 $(this).css('background-color', '#cccccc');
-            }, function() {
+              }, function() {
                 $(this).css('background-color', '#ffffff');
             });
             $('.prevButton').hover(function(){
@@ -315,9 +318,9 @@
 <body>
 <div id="page">
     <div class="inner">
-        <a id="logo" href="http://45.gs/ChevySUVsBB" target="_blank" title="Shop for Mega Sports Cars"><img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/></a>
+        <a id="logo" href="http://45.gs/TrucksUnder30kweb" target="_blank" title="Shop for Mega Trucks"><img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/></a>
         <div class="heading">
-            <h2>Save Big on These Clean, Pre-Owned Chevy/GMC SUVs.</h2>
+            <h2>4th of July Sale on Trucks Under $30,000.</h2>
         </div>
         <div id="events">
             <div class="slidecontainer">
@@ -331,7 +334,7 @@
         </div>
     </div>
     <img src="../libby-summer-101x68.png" height="101" width="68" class="libby" alt="Libby at MegaCars.com" id="libby" />
-    <a href="http://45.gs/ChevySUVsBB" target="_blank" class="button" id="cta">View All</a>
+    <a href="http://45.gs/TrucksUnder30kweb" target="_blank" class="button" id="cta">View All</a>
 </div>
 </body>
 </html>

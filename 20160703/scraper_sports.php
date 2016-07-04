@@ -12,9 +12,9 @@ error_reporting(E_ALL);
  * such as MegaCars.com
  */
 // Variables for customoizations
-$save_json_file = 'hondacivics.json';
-$image_dir = 'images/hondacivics';
-$url_to_fetch = 'http://www.hondaofsanangelo.com/VehicleSearchResults?model=Civic%20Coupe&model=Civic%20Sedan&search=new';
+$save_json_file = 'sports.json';
+$image_dir = 'images/sports';
+$url_to_fetch = 'http://www.megacars.com/VehicleSearchResults?model=Camaro&model=Challenger&model=Charger&search=preowned&paymentTerm=monthly&make=Dodge&make=Chevrolet';
 // ClickMeter.com API key:
 $api_key = '8B44194D-10AB-47CD-B89B-20CA322D46B7';
 // Clickmeter tracking link group id, or campaign id
@@ -56,9 +56,6 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   $title = $condition . ' ' . $year . ' ' . $make . ' ' . $model . ' ' . $trim;
   $img = $element->find('.imageContainer figure a img[src]');
   $img_path = $img[0]->attr['data-original'];
-  // Get pricing
-  $price = $element->find('header > span > span > a > span.price');
-  $price_input = $price[0]->attr['value'];
   // Create a local copy of the image
   $filename = 'array' . $i . '.jpg';
   $image = file_get_contents($img_path);
@@ -93,7 +90,7 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   if (!$exists || empty($clickmeter)) {
     // Get the path to the VDP
     $path = $element->find('.imageContainer figure a');
-    $url = 'http://www.hondaofsanangelo.com/' . $path[0]->attr['href'] . '?utm_source=' . $utm_source .'&utm_medium=' . $utm_medium;
+    $url = 'http://www.megacars.com/' . $path[0]->attr['href'] . '?utm_source=' . $utm_source .'&utm_medium=' . $utm_medium;
     $date = date('Ymd');
     // Clean up the link name
     $link_title = $year . $model . $vin; // . $date;
@@ -133,7 +130,6 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   $cars[] = array (
     'title' => $title,
     'vin' => $vin,
-    'price' => $price_input,
     'url' => $clickmeter,
     'link_id' => $clickmeter_link_id,
     'image' => $image_dir . '/' . $filename,

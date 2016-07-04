@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Honda of San Angelo</title>
+    <title>MegaCars Under $15k</title>
     <script src="https://use.typekit.net/xys6jek.js"></script>
     <script>try {
         Typekit.load({async: true});
@@ -106,8 +106,8 @@
         }
 
         #page {
-            height: 250px;
-            width: 300px;
+            height: 180px;
+            width: 930px;
             background-color: #000000;
             position: relative;
             overflow: hidden;
@@ -115,17 +115,15 @@
         }
         .libby {
             position: absolute;
-            bottom: 0;
+            bottom: -40px;
             left: 30px;
             z-index: 3;
         }
 
         #page .inner {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
             box-sizing: border-box;
-            height: 248px;
-            width: 298px;
+            height: 178px;
+            width: 928px;
             margin: 1px;
             /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d62027+0,aa1229+100 */
             background: rgb(214,32,39); /* Old browsers */
@@ -133,60 +131,66 @@
             background: -webkit-linear-gradient(left,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* Chrome10-25,Safari5.1-6 */
             background: linear-gradient(to right,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d62027', endColorstr='#aa1229',GradientType=1 ); /* IE6-9 */
+            background-image: url(background.jpg);
+            background-position: 0 0;
+            background-repeat: no-repeat;
         }
         #page .inner #logo {
-            width: 80px;
+            width: 180px;
             position: absolute;
-            top: 15px;
+            top: 3px;
             left: 3px;
-            display: block;
         }
         #page .inner #logo img {
-            width: 122px;
+            width: 180px;
             height: auto;
         }
-
         #page .inner #events {
             width: 100%;
             position: absolute;
-            height: 132px;
-            top: 76px;
-            left: 1px;
-        }
+            height: 100px;
+            bottom: 3px;
+            left: 2px;
+         }
         #page .inner .heading {
-            width: 149px;
+            width: 777px;
+            margin: 0;
+            padding: 0;
             position: absolute;
-            top: 6px;
-            right: 5px;
+            top: 3px;
+            left: 190px;
         }
         #page .inner  .heading h2 {
             display: block;
             color: #ffffff;
-            font-size: 14px;
-            line-height: 18px;
+            font-size: 20px;
+            line-height: 20px;
             text-align: center;
+            margin-bottom: 6px;
+            margin-top: 5px;
         }
-        a#cta.button {
+        #page .inner .heading a.button {
             display: block;
-            height: 26px;
-            width: 136px;
+            height: 32px;
+            margin: 4px 4px 0 0;
+            width: 140px;
+            margin: 0 auto;
             text-decoration: none;
             text-align: center;
             font-weight: 800;
-            line-height: 26px;
+            line-height: 32px;
             background-color: #ffffff;
             color: #000000;
             border: 2px solid #000000;
             border-radius: 4px;
-            position: absolute;
-            bottom: 6px;
-            right: 4px;
         }
         .iosSlider {
             position: relative;
+            top: 0;
+            left: 0;
             overflow: hidden;
-            width: 298px;
-            height: 132px;
+            width: 928px;
+            height: 100px;
         }
 
         .iosSlider .prevButton {
@@ -218,17 +222,18 @@
         }
         .iosSlider .slider .item {
             display: block;
-            height: 132px;
-            width: 200px;
+            height: 100px;
+            width: 152px;
             text-decoration: none;
             background-size: cover;
+
         }
         .iosSlider .slider .item h2.carname {
             display: block;
             white-space: nowrap;
-            width: 190px;
+            width: 152px;
             height: 15px;
-            font-size: 10px;
+            font-size: 9px;
             color: #000000;
             text-decoration: none!important;
             font-weight:200;
@@ -249,19 +254,13 @@
             border-radius: 4px;
             margin: 0 auto;
             position: relative;
-            margin-top: 100px;
-            bottom: 10px;
-        }
-        #libby {
-            width: 80px;
-            height: auto;
-            left: 10px;
-            bottom: -5px;
+            margin-top: 80px;
+            bottom: 20px;
         }
     </style>
     <script>
         $(document).ready(function () {
-            $.getJSON("../chevysuvs.json", function (cars, status) {
+            $.getJSON("../trucks2.json", function (cars, status) {
                 if (status == 'success') {
                     console.log(cars);
                     var slides = '';
@@ -287,16 +286,15 @@
                         elasticPullResistance: 0.1,
                         infiniteSlider: true,
                         autoSlide: true,
-                        autoSlideTimer: 1500,
+                        autoSlideTimer: 3500,
                         navPrevSelector: '.prevButton',
                         navNextSelector: '.nextButton',
-                        snapSlideCenter: 'true',
                     });
                 }
             });
-            $('a.button').hover(function(){
+            $('.heading a.button').hover(function(){
                 $(this).css('background-color', '#cccccc');
-            }, function() {
+              }, function() {
                 $(this).css('background-color', '#ffffff');
             });
             $('.prevButton').hover(function(){
@@ -315,9 +313,12 @@
 <body>
 <div id="page">
     <div class="inner">
-        <a id="logo" href="http://45.gs/ChevySUVsBB" target="_blank" title="Shop for Mega Sports Cars"><img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/></a>
+        <div id="logo">
+            <img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/>
+        </div>
         <div class="heading">
-            <h2>Save Big on These Clean, Pre-Owned Chevy/GMC SUVs.</h2>
+            <h2>4th of July Sale! Monday: Pre-Owned Trucks Under $30,000</h2>
+            <a href="http://45.gs/TrucksUnder30kweb" target="_blank" class="button">View All</a>
         </div>
         <div id="events">
             <div class="slidecontainer">
@@ -330,8 +331,7 @@
             </div>
         </div>
     </div>
-    <img src="../libby-summer-101x68.png" height="101" width="68" class="libby" alt="Libby at MegaCars.com" id="libby" />
-    <a href="http://45.gs/ChevySUVsBB" target="_blank" class="button" id="cta">View All</a>
+    <img src="../libby-summer.png" class="libby" alt="Libby at MegaCars.com" />
 </div>
 </body>
 </html>

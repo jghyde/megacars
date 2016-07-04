@@ -12,16 +12,17 @@ error_reporting(E_ALL);
  * such as MegaCars.com
  */
 // Variables for customoizations
-$save_json_file = 'hondacivics.json';
-$image_dir = 'images/hondacivics';
-$url_to_fetch = 'http://www.hondaofsanangelo.com/VehicleSearchResults?model=Civic%20Coupe&model=Civic%20Sedan&search=new';
+$save_json_file = 'rams.json';
+$image_dir = 'images/rams';
+$base_url = 'http://www.allamericanchryslersanangelo.com/';
+$url_to_fetch = 'https://www.allamericanchryslersanangelo.com/new-inventory/index.htm?model=1500&trim=Lone+Star&search=Truck&sortBy=internetPrice';
 // ClickMeter.com API key:
 $api_key = '8B44194D-10AB-47CD-B89B-20CA322D46B7';
 // Clickmeter tracking link group id, or campaign id
-$clickmeter_group_id = '393197'; //'364211';
+$clickmeter_group_id = '398426'; //'364211';
 // Google Analytics link params
 $utm_source = 'san-angelo-live';
-$utm_medium = 'BigBang';
+$utm_medium = 'BigBangNewRamLoneStar';
 
 // End Configuration
 
@@ -30,7 +31,7 @@ array_map('unlink', glob($image_dir . "/*"));
 // Include the library
 include_once('simplehtmldom/simple_html_dom.php');
 //Fetch Megacars webpage
-echo 'Fetching the cars from Megacars.com' . "\n";
+echo 'Fetching the cars from Lithia.com' . "\n";
 $html = file_get_html($url_to_fetch);
 $cars = array();
 $title = '';
@@ -40,7 +41,7 @@ echo 'Parsing the cars from Megacars.com' . "\n";
 $cars_json = file_get_contents($save_json_file);
 $old = json_decode($cars_json);
 $i = 0;
-foreach($html->find('section.vehicleListWrapper article.itemscope') as $element) {
+foreach($html->find('ul.inventoryList li.item') as $element) {
   $vin_obj = $element->find('.imageContainer');
   $vin = $vin_obj[0]->attr['data-vin'];
   $condition_obj = $element->find('header .vehicleName a span.condition');
@@ -54,11 +55,10 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   $trim_obj = $element->find('header .vehicleName a span.trim');
   $trim = $trim_obj[0]->attr['value'];
   $title = $condition . ' ' . $year . ' ' . $make . ' ' . $model . ' ' . $trim;
-  $img = $element->find('.imageContainer figure a img[src]');
-  $img_path = $img[0]->attr['data-original'];
-  // Get pricing
   $price = $element->find('header > span > span > a > span.price');
   $price_input = $price[0]->attr['value'];
+  $img = $element->find('.imageContainer figure a img[src]');
+  $img_path = $img[0]->attr['data-original'];
   // Create a local copy of the image
   $filename = 'array' . $i . '.jpg';
   $image = file_get_contents($img_path);
@@ -93,11 +93,11 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   if (!$exists || empty($clickmeter)) {
     // Get the path to the VDP
     $path = $element->find('.imageContainer figure a');
-    $url = 'http://www.hondaofsanangelo.com/' . $path[0]->attr['href'] . '?utm_source=' . $utm_source .'&utm_medium=' . $utm_medium;
+    $url = $base_url . '/' . $path[0]->attr['href'] . '?utm_source=' . $utm_source .'&utm_medium=' . $utm_medium;
     $date = date('Ymd');
     // Clean up the link name
-    $link_title = $year . $model . $vin; // . $date;
-    $link_title = seo_friendly_url($link_title);
+    $link_title = $model . $vin; // . $date;
+    $link_title = seo_friendly_url($link_title) . '-0625';
     // Get available Domain ID
     $domain_array = get_domain($api_key, 'http://apiv2.clickmeter.com:80/domains?offset=0&limit=1&type=system');
     $body = [

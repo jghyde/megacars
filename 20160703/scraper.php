@@ -12,16 +12,13 @@ error_reporting(E_ALL);
  * such as MegaCars.com
  */
 // Variables for customoizations
-$save_json_file = 'hondacivics.json';
-$image_dir = 'images/hondacivics';
-$url_to_fetch = 'http://www.hondaofsanangelo.com/VehicleSearchResults?model=Civic%20Coupe&model=Civic%20Sedan&search=new';
+$save_json_file = 'cars.json';
+$image_dir = 'images';
+$url_to_fetch = 'http://www.megacars.com/VehicleSearchResults?priceRange=10000:15000&priceRange=5000:10000&search=preowned&paymentTerm=monthly&pageNumber=1';
 // ClickMeter.com API key:
 $api_key = '8B44194D-10AB-47CD-B89B-20CA322D46B7';
 // Clickmeter tracking link group id, or campaign id
-$clickmeter_group_id = '393197'; //'364211';
-// Google Analytics link params
-$utm_source = 'san-angelo-live';
-$utm_medium = 'BigBang';
+$clickmeter_group_id = '364211';
 
 // End Configuration
 
@@ -39,7 +36,6 @@ $img = '';
 echo 'Parsing the cars from Megacars.com' . "\n";
 $cars_json = file_get_contents($save_json_file);
 $old = json_decode($cars_json);
-$i = 0;
 foreach($html->find('section.vehicleListWrapper article.itemscope') as $element) {
   $vin_obj = $element->find('.imageContainer');
   $vin = $vin_obj[0]->attr['data-vin'];
@@ -56,9 +52,6 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   $title = $condition . ' ' . $year . ' ' . $make . ' ' . $model . ' ' . $trim;
   $img = $element->find('.imageContainer figure a img[src]');
   $img_path = $img[0]->attr['data-original'];
-  // Get pricing
-  $price = $element->find('header > span > span > a > span.price');
-  $price_input = $price[0]->attr['value'];
   // Create a local copy of the image
   $filename = 'array' . $i . '.jpg';
   $image = file_get_contents($img_path);
@@ -77,34 +70,25 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   $clickmeter = '';
   foreach($old as $v) {
     if ($v->vin == $vin) {
-      // Check to see if there is a tracking id
-      if (!empty($v->link_id)) {
-        $tid = get_domain_details($api_key, 'http://apiv2.clickmeter.com:80/datapoints/' . $v->link_id);
-        $clickmeter = $tid->trackingCode;
-        $clickmeter_link_id = $tid->id;
-        $exists = true;
-      }
-      else {
-        $clickmeter = $v->url;
-        $clickmeter_link_id = $v->link_id;
-      }
+      $exists = true;
+      $clickmeter = $v->url;
     }
   }
   if (!$exists || empty($clickmeter)) {
     // Get the path to the VDP
     $path = $element->find('.imageContainer figure a');
-    $url = 'http://www.hondaofsanangelo.com/' . $path[0]->attr['href'] . '?utm_source=' . $utm_source .'&utm_medium=' . $utm_medium;
+    $url = 'http://www.megacars.com/' . $path[0]->attr['href'] . '?utm_source=san-angelo-live&utm_medium=970x250';
     $date = date('Ymd');
     // Clean up the link name
-    $link_title = $year . $model . $vin; // . $date;
+    $link_title = $year . $make . $model . $date;
     $link_title = seo_friendly_url($link_title);
     // Get available Domain ID
     $domain_array = get_domain($api_key, 'http://apiv2.clickmeter.com:80/domains?offset=0&limit=1&type=system');
     $body = [
       'type' => 0,
-      'title' => $link_title,
+      'title' => $link_title . 'JSON',
       'groupId' => $clickmeter_group_id,
-      'name' => $link_title,
+      'name' => $link_title . 'JSON',
       'typeTL' => [
         'domainId' => $domain_array['id'], // http://45.gs/
         'redirectType' => 301,
@@ -112,17 +96,15 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
       ],
     ];
     $output = api_request('http://apiv2.clickmeter.com/datapoints/', 'POST', $body, $api_key);
-    if (!empty($output)) {
+    if ($output === true) {
       if (isset($output->errors[0]->errorMessage)) {
         echo 'ClickMeter said (error on ' . $linktitle . ' => ' . $url . '): ' . $output->errors[0]->errorMessage . "\n";
-        $clickmeter = $url;
       }
       else {
         // Decode the $output into a real url
-        $request_tracking_url = 'http://apiv2.clickmeter.com:80' . $output->uri;
-        $tracking_url_obj = get_domain_details($api_key, $request_tracking_url);
-        $clickmeter = $tracking_url_obj->trackingCode;
-        $clickmeter_link_id = $tracking_url_obj->id;
+        $request_url = 'http://apiv2.clickmeter.com:80' . $output['uri'];
+        $tracking_url_array = get_domain_details($api_key, $request_url);
+        $clickmeter = 'http://45.gs/' . $link_title;
       }
     }
     else {
@@ -133,12 +115,9 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
   $cars[] = array (
     'title' => $title,
     'vin' => $vin,
-    'price' => $price_input,
     'url' => $clickmeter,
-    'link_id' => $clickmeter_link_id,
     'image' => $image_dir . '/' . $filename,
   );
-  $clickmeter_link_id = null;
   $i++;
   echo 'Fetched and saved ' . $i . ' of 10 cars' . "\n";
 }
@@ -230,14 +209,13 @@ function get_domain($api_key, $request_url) {
   );
   return $domain;
 }
-function get_domain_details($api_key, $request_tracking_url) {
+function get_domain_details($api_key, $request_url) {
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_HTTPHEADER,array('X-Clickmeter-Authkey:' . $api_key,'Content-Type: application/json'));
-  curl_setopt($ch, CURLOPT_URL, $request_tracking_url);
+  curl_setopt($ch, CURLOPT_URL, $request_url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   $result = curl_exec($ch);
   curl_close($ch);
   return json_decode($result);
 }
-
 
