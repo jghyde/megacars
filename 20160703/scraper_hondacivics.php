@@ -22,6 +22,7 @@ $clickmeter_group_id = '393197'; //'364211';
 // Google Analytics link params
 $utm_source = 'san-angelo-live';
 $utm_medium = 'BigBang';
+$fourchar = 'ju10';
 
 // End Configuration
 
@@ -104,7 +105,7 @@ foreach($html->find('section.vehicleListWrapper article.itemscope') as $element)
       'type' => 0,
       'title' => $link_title,
       'groupId' => $clickmeter_group_id,
-      'name' => $link_title,
+      'name' => $link_title . $fourchar,
       'typeTL' => [
         'domainId' => $domain_array['id'], // http://45.gs/
         'redirectType' => 301,
