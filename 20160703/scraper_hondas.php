@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 // Variables for customoizations
 $save_json_file = 'hondas.json';
 $image_dir = 'images/hondas';
-$url_to_fetch = 'http://www.megacars.com/VehicleSearchResults?sort=year|desc&search=preowned&paymentTerm=monthly&make=Honda';
+$url_to_fetch = 'http://www.megacars.com/VehicleSearchResults?model=Civic%20Coupe&model=CR-V&model=Civic%20Sedan&search=preowned&paymentTerm=monthly&make=Honda&pageNumber=1';
 // ClickMeter.com API key:
 $api_key = '8B44194D-10AB-47CD-B89B-20CA322D46B7';
 // Clickmeter tracking link group id, or campaign id
@@ -22,7 +22,7 @@ $clickmeter_group_id = '393197'; //'364211';
 // Google Analytics link params
 $utm_source = 'san-angelo-live';
 $utm_medium = 'BigBang';
-$fourchar = 'ju10';
+$fourchar = 'sp12';
 
 // End Configuration
 
