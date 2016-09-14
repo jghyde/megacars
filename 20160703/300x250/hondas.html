@@ -128,25 +128,24 @@
             width: 298px;
             margin: 1px;
             /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d62027+0,aa1229+100 */
-            background: rgb(214,32,39); /* Old browsers */
-            background: -moz-linear-gradient(left,  rgba(214,32,39,1) 0%, rgba(170,18,41,1) 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(left,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to right,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d62027', endColorstr='#aa1229',GradientType=1 ); /* IE6-9 */
-            background-image: url(background.jpg);
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232 */
+            background: rgb(255,255,255); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
             background-position: 0 0;
             background-repeat: no-repeat;
         }
-        #page .inner #logo {
-            width: 80px;
-            position: absolute;
-            top: 15px;
-            left: 3px;
+        #logo {
             display: block;
         }
-        #page .inner #logo img {
-            width: 122px;
-            height: auto;
+        #logo img {
+            position: absolute;
+            top: 216px;
+            left: 87px;
+            width: 66px;
         }
 
         #page .inner #events {
@@ -159,16 +158,16 @@
         #page .inner .heading {
             width: 149px;
             position: absolute;
-            top: 10px;
+            top: 5px;
             right: 5px;
         }
-        #page .inner  .heading h2 { text-shadow: 1px 1px 1px #000000;
+        #page .inner  .heading h2 {
+            /*text-shadow: 1px 1px 1px #cccccc;*/
             display: block;
-            color: #ffffff;
+            color: #0075B2;
             font-size: 14px;
             line-height: 18px;
             text-align: center;
-            text-shadow: 1px 1px 1px #000000;
         }
         a#cta.button {
             display: block;
@@ -262,6 +261,19 @@
             left: 10px;
             bottom: -5px;
         }
+        .cpo {
+            width: 133px;
+            height: auto;
+            margin-top: 8px;
+            margin-left: 6px;
+            margin-bottom: 3px;
+        }
+        .disclaimer {
+            font-size: 6px;
+            margin-bottom: 5px;
+            padding: 3px;
+        }
+
     </style>
     <script>
         $(document).ready(function () {
@@ -319,10 +331,11 @@
 <body>
 <div id="page">
     <div class="inner">
-        <a id="logo" href="http://45.gs/AllHondasBB" target="_blank" title="Shop for Mega Sports Cars"><img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/></a>
+        <img src="../970x250/cpologo.png" alt="Honda of San Angelo Certified Pre-Owned Hondas" class="cpo" />
         <div class="heading">
-            <h2>Hot Summer Deals on Pre-Owned Hondas.</h2>
+            <h2>1.9% APR on Certified Pre-Owned Hondas.</h2>
         </div>
+        <p class="disclaimer">Available on approved credit through Honda Financial Services. 1.9% APR for 24, 36, months on all 2011-1016 Honda Certified Pre-Owned Civic and CR-V vehicles through 9/19/2016 for well-qualified buyers. Example per $1,000 financed at 1.9% APR: 24 months at $42.50/month or 36 months at $28.60/month. Not all buyers will qualify. Higher financing rates apply for buyers with lower credit rating. Dealer sets actual price. See participating dealer for details.</p>
         <div id="events">
             <div class="slidecontainer">
                 <div class='iosSlider'>
@@ -335,6 +348,7 @@
         </div>
     </div>
     <img src="../libby-summer-101x68.png" height="101" width="68" class="libby" alt="Libby at MegaCars.com" id="libby" />
+    <a id="logo" href="http://45.gs/AllHondasBB" target="_blank" title="Shop for Mega Sports Cars"><img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/></a>
     <a href="http://45.gs/AllHondasBB" target="_blank" class="button" id="cta">View All</a>
 </div>
 </body>
