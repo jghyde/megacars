@@ -1,12 +1,14 @@
 <html>
 <head>
-    <title>MegaCars Under $15k</title>
+    <title>MegaCars</title>
     <script src="https://use.typekit.net/xys6jek.js"></script>
     <script>try {
         Typekit.load({async: true});
     } catch (e) {
     }</script>
     <base target="_blank"/>
+    <script src="//fast.wistia.com/embed/medias/bf5zxre8pf.jsonp" async></script>
+    <script src="//fast.wistia.com/assets/external/E-v1.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../iosslider/_src/jquery.iosslider.min.js"></script>
     <script src="../jquery.easing.1.3.js"></script>
@@ -112,11 +114,12 @@
             position: relative;
             overflow: hidden;
             box-sizing: border-box;
+            overflow: hidden;
         }
         .libby {
             position: absolute;
             bottom: -40px;
-            left: 30px;
+            left: 269px;
             z-index: 3;
         }
 
@@ -131,36 +134,44 @@
             background: -webkit-linear-gradient(left,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* Chrome10-25,Safari5.1-6 */
             background: linear-gradient(to right,  rgba(214,32,39,1) 0%,rgba(170,18,41,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d62027', endColorstr='#aa1229',GradientType=1 ); /* IE6-9 */
-            background-image: url(background.jpg);
             background-position: 0 0;
             background-repeat: no-repeat;
         }
+        #page .inner #video {
+            width: 221px;
+            height: 162px;
+            position: absolute;
+            left: 3px;
+            top: 9px;
+            box-shadow: 0px 0px 5px #000000;
+        }
         #page .inner #logo {
-            width: 180px;
+            width: 160px;
             position: absolute;
             top: 3px;
-            left: 3px;
+            left: 226px;
         }
         #page .inner #logo img {
             width: 180px;
             height: auto;
         }
         #page .inner #events {
-            width: 100%;
+            width: 700px;
             position: absolute;
             height: 100px;
-            bottom: 3px;
-            left: 2px;
+            bottom: 2px;
+            right: 2px;
          }
         #page .inner .heading {
-            width: 777px;
+            width: 528px;
             margin: 0;
             padding: 0;
             position: absolute;
             top: 3px;
-            left: 190px;
+            left: 400px;
         }
-        #page .inner  .heading h2 { text-shadow: 1px 1px 1px #000000;
+        #page .inner  .heading h2 {
+            text-shadow: 1px 1px 1px #000000;
             display: block;
             color: #ffffff;
             font-size: 20px;
@@ -186,10 +197,8 @@
         }
         .iosSlider {
             position: relative;
-            top: 0;
-            left: 0;
             overflow: hidden;
-            width: 928px;
+            width: 700px;
             height: 100px;
         }
 
@@ -313,11 +322,13 @@
 <body>
 <div id="page">
     <div class="inner">
+        <div id="video" class="wistia_embed wistia_async_bf5zxre8pf" style="height:162px;width:221px">&nbsp;</div>
+        
         <div id="logo">
             <img src="../logo-small.png" alt="MegaCars in San Angelo, Texas"/>
         </div>
         <div class="heading">
-            <h2>Hot Summer Deals on Pre-Owned Trucks Under $30,000</h2>
+            <h2>Get a Deal on a Pre-Owned, Late Model Pickup.</h2>
             <a href="http://45.gs/TrucksUnder30kweb" target="_blank" class="button">View All</a>
         </div>
         <div id="events">
